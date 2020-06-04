@@ -46,11 +46,7 @@ export default class SwitchComponent extends Vue {
     // console.log((this.$refs.neumorphicSwitch as HTMLInputElement).value)
     // this.checked = newValue === (this.$refs.neumorphicSwitch as HTMLInputElement).value;
     // this.neumorphicSwitchLabelClass['neumorphic-switch-label-checked'] = this.checked;
-    if(newValue === true) {
-      this.checked = true;
-    } else {
-      this.checked = false;
-    }
+    this.checked = newValue === true;
     this.neumorphicSwitchLabelClass['neumorphic-switch-label-checked'] = this.checked;
   }
 

@@ -15,6 +15,6 @@ export default class NeumorphicLabel extends Vue {
 .neumorphic-label {
   color: #868b98;
   display: block;
-  margin: 10px 10px 5px;
+  margin: 10px 15px 10px;
 }
 </style>

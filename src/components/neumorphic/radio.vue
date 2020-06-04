@@ -30,7 +30,7 @@ export default class Radio extends Vue {
   
   checked: boolean = false;
 
-  @Prop({required: true})
+  @Prop()
   label!: string | number;
 
   @Prop({type: Boolean, default: false})
@@ -69,7 +69,7 @@ export default class Radio extends Vue {
   }
 
   mounted() {
-    this.checked = (this.value === this.label);
+    this.checked = !!this.value && !!this.label && this.value === this.label;
     this.neumorphicRadioClass['neumorphic-radio-checked'] = this.checked;
   }
 }

@@ -9,6 +9,7 @@
       :value="value"
       :placeholder="placeholder"
       :disabled="disabled"
+      :readonly="readonly"
       @input="$emit('input', $event.target.value)">
   </div>
 </template>
@@ -30,6 +31,9 @@ export default class NeumorphicInput extends Vue {
 
   @Prop({ type: String, default: 'text' }) 
   type?: string;
+
+  @Prop({type: Boolean, default: false})
+  readonly!: boolean;
 
   @Prop({type: Boolean, default: false})
   disabled!: boolean;
