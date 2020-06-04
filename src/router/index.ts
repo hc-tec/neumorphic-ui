@@ -7,7 +7,7 @@ const routes: RouteConfig[] = [
   {
     path: '/',
     name: 'home',
-    component: () => import('../test.vue'),
+    component: () => import('../single_test.vue'),
   },
 ];
 

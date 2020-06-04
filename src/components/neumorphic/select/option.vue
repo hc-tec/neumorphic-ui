@@ -58,26 +58,26 @@ export default class Option extends Vue {
 .neumorphic-option {
   cursor: pointer;
   border: 0;
-  color: #7b7e8c;
+  color: var(--option-color);
   font-weight: normal;
   padding: 5px 3em;
   line-height: 1.25em;
   margin: 0;
-  font-size: 1.1rem;
+  font-size: var(--bigger-font-size);
   outline: none;
   box-sizing: border-box;
   transition: background-color .3s, color .3s;
 }
 .neumorphic-option:hover {
-  background-color: rgb(214, 223, 234);
+  background-color: var(--option-bgcolor);
 }
 .neumorphic-option-disabled {
-  background-color: none !important;
-  color: #c0c4cc !important;
+  background-color: var(--option-disabled-bgcolor);
+  color: var(--disabled-color);
   pointer-events: none !important;
   cursor: not-allowed !important;
 }
 .neumorphic-option-checked {
-  color: #66ccff;
+  color: var(--second-color);
 }
 </style>

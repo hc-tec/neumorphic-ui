@@ -36,8 +36,8 @@
 </template>
 <script lang='ts'>
 import { Component, Vue, Prop, Watch, Model } from 'vue-property-decorator';
-import neumorphicOption from './option.vue';
-import neumorphicLabel from './label.vue';
+import neumorphicOption from '../option/option.vue';
+import neumorphicLabel from '../label/label.vue';
 @Component({
   components: {
     'neumorphic-option': neumorphicOption,
@@ -123,31 +123,30 @@ export default class Select extends Vue {
   list-style-type: none;
   cursor: pointer;
   border: 0;
-  color: #7b7e8c;
+  color: var(--option-color);
   font-weight: normal;
   padding: 10px 1em;
   padding-right: 3em;
   line-height: 1.25em;
-  font-size: 1.1rem;
-  box-shadow: 0.3rem 0.3rem 0.6rem hsla(215, 46%, calc(93% - 15%), 0.8), 
-              calc(-1 * 0.3rem) calc(-1 * 0.3rem) 0.6rem hsla(215, 46%, calc(93% + 15%), 0.8);
+  font-size: var(--bigger-font-size);
+  box-shadow: var(--shadow);
   outline: none;
   box-sizing: border-box;
-  border-radius: 10px;
+  border-radius: var(--primary-radius);
   position: relative;
   transition: box-shadow 0.2s;
 }
 .neumorphic-select-input {
-  background-color: transparent;
+  background-color: var(--primary-bgcolor);
   min-width: 130px;
   max-width: 240px;
 }
 .neumorphic-select-input:disabled {
-  background-color: #d4d5d7db;
+  background-color: var(--select-disabled-bgcolor);
   cursor: not-allowed;
 }
 .neumorphic-select-arrow {
-  color: #7b7e8c;
+  color: var(--unvary-elem-color);
   position: absolute;
   top: 45%;
   right: 10px;

@@ -20,7 +20,7 @@
 </template>
 <script lang='ts'>
 import { Component, Vue, Model, Prop, Watch } from 'vue-property-decorator'
-import neumorphicLabel from './label.vue'
+import neumorphicLabel from '../label/label.vue'
 @Component({
   components: {
     'neumorphic-label': neumorphicLabel
@@ -74,7 +74,7 @@ export default class Radio extends Vue {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style scoped>
 .neumorphic-radio-wrapper {
   display: inline-block;
   margin-right: 30px;
@@ -99,8 +99,7 @@ export default class Radio extends Vue {
   cursor: pointer;
 }
 .neumorphic-radio {
-  box-shadow: 0.3rem 0.3rem 0.6rem hsla(215, 46%, calc(93% - 15%), 0.8),
-              calc(-1 * 0.3rem) calc(-1 * 0.3rem) 0.6rem hsla(215, 46%, calc(93% + 15%), 0.8);
+  box-shadow: var(--shadow);
   position: relative;
   display: flex;
   justify-content: center;
@@ -117,7 +116,7 @@ export default class Radio extends Vue {
   position: absolute;
   width: 1rem;
   height: 1rem;
-  background: #61677C;
+  background: var(--radio-circle-bgcolor);
   border-radius: 50%;
   transition: .3s ease;
 }
@@ -126,18 +125,17 @@ export default class Radio extends Vue {
   margin-left: 10px;
 }
 .neumorphic-radio-checked {
-  box-shadow: inset 0.3rem 0.3rem 0.6rem hsla(215, 46%, calc(93% - 15%), 0.8), 
-              inset calc(-1 * 0.3rem) calc(-1 * 0.3rem) 0.6rem hsla(215, 46%, calc(93% + 15%), 0.8);
+  box-shadow: var(--inner-shadow);
 }
 .neumorphic-radio:hover::after,
 .neumorphic-radio-checked::after {
-  background: #66ccff;
+  background: var(--second-color);
 }
 .neumorphic-radio-disabled {
   cursor: not-allowed;
 }
 .neumorphic-radio-disabled::after {
-  background: #ced0d8 !important;
+  background: var(--radio-circle-disabled-bgcolor);
 }
 
 </style>

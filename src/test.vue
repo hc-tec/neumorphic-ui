@@ -31,7 +31,7 @@
 
     <neumorphicSelect label="选择器" :optionList="optionList"></neumorphicSelect>
 
-    <neumorphicSwitch></neumorphicSwitch>
+    <neumorphicSwitch :disabled="true"></neumorphicSwitch>
 
     <neumorphicSwitch></neumorphicSwitch>
 

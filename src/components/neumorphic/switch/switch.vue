@@ -91,12 +91,11 @@ export default class SwitchComponent extends Vue {
   align-items: center;
   width: 100%;
   height: 3rem;
-  box-shadow: 0.3rem 0.3rem 0.6rem hsla(215, 46%, calc(93% - 15%), 0.8), 
-              calc(-1 * 0.3rem) calc(-1 * 0.3rem) 0.6rem hsla(215, 46%, calc(93% + 15%), 0.8);
-  background: rgba(255,255,255,0);
+  box-shadow: var(--shadow);
+  background: var(--primary-bgcolor);
   position: relative;
   cursor: pointer;
-  border-radius: 1.6rem;
+  border-radius: var(--large-radius);
 }
 .neumorphic-switch-label::after {
   content: "";
@@ -105,7 +104,7 @@ export default class SwitchComponent extends Vue {
   width: 2.1rem;
   height: 2.1rem;
   border-radius: 50%;
-  background: #9baacf;
+  background: var(--switch-off-circle-bgcolor);
   transition: all .4s ease;
 }
 .neumorphic-switch-label::before {
@@ -113,7 +112,7 @@ export default class SwitchComponent extends Vue {
   width: 100%;
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(45deg, #5fe8dc, #66ccff);
+  background: var(--linear-color);
   opacity: 0;
   transition: all .4s ease;
 }
@@ -122,17 +121,17 @@ export default class SwitchComponent extends Vue {
 }
 .neumorphic-switch-label-checked::after {
   left: 57%;
-  background: #8abdff;
+  background: var(--switch-on-circle-bgcolor);
 }
 .neumorphic-switch-input-disabled, 
 .neumorphic-switch-label-disabled {
   cursor: not-allowed !important;
-  background: #c7c7c7;
+  background: var(--disabled-bgcolor);
 }
 .neumorphic-switch-label-disabled::before {
   opacity: 0;
 }
 .neumorphic-switch-label-disabled::after {
-  background-color: #f6ebeb;
+  background-color: var(--switch-disabled-bgcolor);
 }
 </style>

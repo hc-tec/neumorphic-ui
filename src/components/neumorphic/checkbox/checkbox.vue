@@ -21,7 +21,7 @@
 </template>
 <script lang='ts'>
 import { Component, Vue, Model, Ref, Prop, Watch } from 'vue-property-decorator'
-import neumorphicLabel from './label.vue'
+import neumorphicLabel from '../label/label.vue'
 @Component({
   components: {
     'neumorphic-label': neumorphicLabel
@@ -86,20 +86,22 @@ export default class Checkbox extends Vue {
   display: inline-block;
 }
 .neumorphic-checkbox {
-  box-shadow: 0.3rem 0.3rem 0.6rem hsla(215, 46%, calc(93% - 15%), 0.8), 
-              calc(-1 * 0.3rem) calc(-1 * 0.3rem) 0.6rem hsla(215, 46%, calc(93% + 15%), 0.8);
+  box-shadow: var(--shadow);
   cursor: pointer;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: .3rem;
+  border-radius: var(--small-radius);
   overflow: hidden;
   padding: 6px;
-  font-size: 1rem;
+  font-size: var(--primary-font-size);
   font-weight: 700;
-  color: rgb(184, 189, 195);
+  color: var(--primary-color);
   transition: .3s ease;
+}
+.neumorphic-checkbox:hover {
+  color: var(--second-color);
 }
 .neumorphic-checkbox-input {
   opacity: 0;
@@ -117,9 +119,8 @@ export default class Checkbox extends Vue {
   cursor: pointer;
 }
 .neumorphic-checkbox-checked {
-  box-shadow: inset 0.3rem 0.3rem 0.6rem hsla(215, 46%, calc(93% - 15%), 0.8), 
-              inset calc(-1 * 0.3rem) calc(-1 * 0.3rem) 0.6rem hsla(215, 46%, calc(93% + 15%), 0.8);
-  color: #66ccff;
+  box-shadow: var(--inner-shadow);
+  color: var(--second-color);
 }
 .neumorphic-checkbox-slot {
   margin: 0;
@@ -128,7 +129,7 @@ export default class Checkbox extends Vue {
 }
 .neumorphic-checkbox-input-disabled,
 .neumorphic-checkbox-disabled {
-  cursor: not-allowed;
-  color: #c7c7c7 !important;
+  cursor: not-allowed !important;
+  color: var(--disabled-color);
 }
 </style>

@@ -100,9 +100,8 @@ export default class Slider extends Vue {
   width: 100%;
   height: 1rem;
   cursor: pointer;
-  box-shadow: inset 0.3rem 0.3rem 0.6rem hsla(215, 46%, calc(93% - 15%), 0.8), 
-              inset calc(-1 * 0.3rem) calc(-1 * 0.3rem) 0.6rem hsla(215, 46%, calc(93% + 15%), 0.8);
-  border-radius: 1rem;
+  box-shadow: var(--slider-shadow);
+  border-radius: var(--primary-shadow);
   position: relative;
   display: flex;
   justify-content: center;
@@ -112,9 +111,9 @@ export default class Slider extends Vue {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
-  background: #fff;
+  background: var(--slider-button-bgcolor);
   position: absolute;
-  box-shadow: 0px .1rem .3rem 0px #66ccff;
+  box-shadow: var(--slider-button-shadow);
   z-index: 200;
   display: flex;
   justify-content: center;
@@ -127,8 +126,7 @@ export default class Slider extends Vue {
   width: .8rem;
   height: .8rem;
   border-radius: 50%;
-  box-shadow: inset 0.3rem 0.3rem 0.6rem hsla(215, 46%, calc(93% - 15%), 0.8), 
-              inset calc(-1 * 0.3rem) calc(-1 * 0.3rem) 0.6rem hsla(215, 46%, calc(93% + 15%), 0.8);
+  box-shadow: var(--slider-button-shadow);
 }
 .neumorphic-slider-button:hover .neumorphic-slider-tooltip {
   opacity: 1;
@@ -140,8 +138,7 @@ export default class Slider extends Vue {
   left: 0;
   z-index: 100;
   border-radius: inherit;
-  background: #66ccff;
-  background: linear-gradient(45deg, #5fe8dc, #66ccff);
+  background: var(--linear-color);
   transition: width .2s;
 }
 .neumorphic-slider-tooltip {
@@ -149,14 +146,13 @@ export default class Slider extends Vue {
   top: 2.6rem;
   height: 2.5rem;
   width: 3rem;
-  border-radius: .6rem;
+  border-radius: var(--small-radius);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.2rem;
-  color: #66ccff;
-  box-shadow: 0.3rem 0.3rem 0.6rem hsla(215, 46%, calc(93% - 15%), 0.8), 
-              calc(-1 * 0.3rem) calc(-1 * 0.3rem) 0.6rem hsla(215, 46%, calc(93% + 15%), 0.8);
+  font-size: var(--bigger-font-size);
+  color: var(--second-color);
+  box-shadow: var(--shadow);
   opacity: 0;
   transition: opacity .3s ease;
 }

@@ -15,7 +15,7 @@
 </template>
 <script lang='ts'>
 import { Component, Vue, Prop, Model } from 'vue-property-decorator'
-import neumorphicLabel from './label.vue'
+import neumorphicLabel from '../label/label.vue'
 @Component({
   components: {
     'neumorphic-label': neumorphicLabel
@@ -48,37 +48,36 @@ export default class NeumorphicInput extends Vue {
 
 }
 </script>
-<style lang="scss" scoped>
+<style scoped>
 .neumorphic-input-content {
-  // display: inline-block;
+  /* // display: inline-block; */
 }
 .neumorphic-input {
   font-family: 'Poppins', sans-serif;
   display: inline-block;
-  border-radius: 10px;
+  border-radius: var(--primary-radius);
   border: 3px solid rgb(228,235,245);
   margin-bottom: 10px;
-  border-radius: 1rem;
-  box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+  box-shadow: var(--input-shadow);
   outline: none !important;
   line-height: 3;
   width: 90%;
-  background-color: transparent;
-  font-size: 1em;
+  background-color: var(--primary-bgcolor);
+  font-size: var(--primary-font-size);
   letter-spacing: 0.1em;
-  color: #61677C;
-  text-shadow: 1px 1px 0 #FFF;
+  color: var(--primary-color);
+  text-shadow: var(--text-shadow);
   padding: 0 16px;
   transition: box-shadow .2s;
-  &:focus {
-    box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
-  }
+}
+.neumorphic-input:focus {
+  box-shadow: var(--input-focus-shadow);
 }
 
 
 .neumorphic-disabled {
-  cursor: not-allowed;
-  background-color: #d4d5d7;
-  box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+  cursor: not-allowed !important;
+  background-color: var(--disabled-bgcolor) !important;
+  box-shadow: var(--input-disabled-shadow);
 }
 </style>
