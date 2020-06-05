@@ -12,6 +12,7 @@ import { Component, Vue, Prop, Emit } from 'vue-property-decorator'
 @Component
 export default class NeumorphicBtn extends Vue {
   @Prop({ type: Boolean, default: false }) private circle!: boolean;
+
   neumorphicButtonClass: Record<string, boolean> = {
     'neumorphic-btn': true,
     'neumorphic-btn-circle': this.circle

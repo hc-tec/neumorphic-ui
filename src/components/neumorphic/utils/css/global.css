@@ -61,6 +61,12 @@
   /* 文字阴影 */
   --text-shadow: 1px 1px 0 #FFF;
 
+  /* 特殊处理：头像阴影 */
+  --avatar-shadow: 0px 0px 2px #5f5f5f,
+                   0px 0px 0px 5px #ecf0f3,
+                   8px 8px 15px #a7aaaf,
+                   -8px -8px 15px #ffffff;
+
   /* 主要文字大小 */
   --primary-font-size: .9rem;
   --bigger-font-size: 1.1rem;
@@ -73,4 +79,25 @@
 
   /* 特殊处理：分割线弧度 */
   --divider-radius: .5rem;
+}
+
+
+.neumorphic-messagebox {
+  width: 20rem;
+  height: 3rem;
+  border-radius: var(--small-radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: unset;
+  align-items: center;
+  position: fixed;
+  left: 50%;
+  top: 10px;
+  transform: translate(-50%, -100px);
+  transition: all .5s;
+}
+.neumorphic-messagebox-text {
+  font-size: var(--primary-font-size);
+  color: var(--primary-color);
+  margin-left: 2rem;
 }
