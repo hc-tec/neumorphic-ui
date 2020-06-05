@@ -39,15 +39,15 @@ module.exports = {
 
   css: {
     extract: false
-  },
-
-  configureWebpack: {
-    resolve: {
-      alias: {
-        // 启用 runtime 模式
-        vue$: 'vue/dist/vue.esm.js'
-      }
-    }
   }
+
+  // configureWebpack: {
+  //   resolve: {
+  //     alias: {
+  //       // 启用 runtime 模式
+  //       vue$: 'vue/dist/vue.esm.js'
+  //     }
+  //   }
+  // }
 
 }

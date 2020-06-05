@@ -1,6 +1,6 @@
 <template>
   <div>
-    <neu>
+    <!-- <neu>
       <neuPane :textShadow="true" title="这是一个标题">
         你
       </neuPane>
@@ -12,7 +12,14 @@
       <neuPane :textShadow="true" title="什么">
         我是
       </neuPane>
-    </neu>
+    </neu> -->
+
+    <pagi
+      :total="51"
+      @page-change="pageChange($event)">
+
+    </pagi>
+  
   </div>
 </template>
 <script lang='ts'>
@@ -21,11 +28,12 @@ import neu from './components/neumorphic/tabs/tabs.vue'
 import neuPane from './components/neumorphic/tabs/tabPane.vue'
 import { MessageBox } from './components/neumorphic/messageBox/messageBox';
 import { MessageBoxConfig } from './components/neumorphic/messageBox/messageBoxConfig';
-
+import pagi from './components/neumorphic/pagination/pagination.vue'
 @Component({
   components: {
     neu,
-    neuPane
+    neuPane,
+    pagi
   }
 })
 export default class Single_test extends Vue {
@@ -62,6 +70,10 @@ export default class Single_test extends Vue {
 
   closeTag(tag: any) {
     console.log(tag);
+  }
+
+  pageChange(index: number) {
+    console.log(index);
   }
 }
 </script>

@@ -2,13 +2,13 @@
   <div 
     class="neumorphic-tab-pane" 
     :style="neumorphicTabPaneStyle"
-    :title="title">
+    :title="title"
+    :size="size">
     <slot></slot>
   </div>
 </template>
 <script lang='ts'>
 import { Component, Vue, Prop } from 'vue-property-decorator'
-
 @Component
 export default class TabPane extends Vue {
 
@@ -17,6 +17,8 @@ export default class TabPane extends Vue {
 
   @Prop({type: Boolean, default: false})
   textShadow!: boolean;
+
+  
 
   neumorphicTabPaneStyle: Record<string, any> = {
     'text-shadow': this.textShadow ? '1px 1px 0 #FFF' : ''

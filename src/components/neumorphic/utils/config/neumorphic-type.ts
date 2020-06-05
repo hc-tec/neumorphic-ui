@@ -1,4 +1,5 @@
 
+export type ButtonSizeType = 'large' | 'normal' | 'small' | 'mini';
 
 export type ShadowType =  'normal' | 'light';
 
