@@ -1,5 +1,5 @@
 import { MessageBoxConfig } from './messageBoxConfig';
-
+import { MessageBoxType } from '../utils/config/neumorphic-type';
 export class MessageBox {
   public topList: number[] = [0];
   public setMsg(config: MessageBoxConfig): void {
@@ -7,11 +7,11 @@ export class MessageBox {
     this.generateMessageBox(config);
   }
   private generateMessageBox(config: MessageBoxConfig): void {
-    const messageBox = this.generateElement('div', 'neumorphic-messagebox');
+    const messageBox = this.generateElement('div', 'neumorphic-messagebox', config.type);
     const top = this.topList[this.topList.length - 1] + 55;
     this.topList.push(top);
     messageBox.style.top = `${top}px`;
-    const message = this.generateElement('p', 'neumorphic-messagebox-text');
+    const message = this.generateElement('p', 'neumorphic-messagebox-text', config.type);
     message.appendChild(document.createTextNode(config.message));
     messageBox.appendChild(message);
     const body = document.body;
@@ -28,9 +28,13 @@ export class MessageBox {
     }, config.removeTimeout);
   }
 
-  private generateElement(element: string, className: string): HTMLElement {
+  private generateElement(element: string, className: string, type: MessageBoxType): HTMLElement {
     const ele =  document.createElement(element);
-    ele.className = className;
+    if (element === 'p') {
+      ele.className = `${className}-${type} ${className}`;
+    } else {
+      ele.className = className;
+    }
     return ele;
   }
 

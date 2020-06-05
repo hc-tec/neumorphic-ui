@@ -4,6 +4,11 @@
   --primary-darker-color: #5e636f;
   --primary-bgcolor: transparent;
 
+  --success-color: #26de81;
+  --warning-color: #dcc021;
+  --error-color: #e55039;
+  --info-color: #84817a;
+
   /* 次要颜色 */
   --second-color: #66ccff;
 
@@ -95,9 +100,22 @@
   top: 10px;
   transform: translate(-50%, -100px);
   transition: all .5s;
+  font-size: var(--primary-font-size);
 }
 .neumorphic-messagebox-text {
-  font-size: var(--primary-font-size);
   color: var(--primary-color);
   margin-left: 2rem;
+  text-shadow: var(--text-shadow);
+}
+.neumorphic-messagebox-text-success {
+  color: var(--success-color);
+}
+.neumorphic-messagebox-text-warning {
+  color: var(--warning-color);
+}
+.neumorphic-messagebox-text-error {
+  color: var(--error-color);
+}
+.neumorphic-messagebox-text-info {
+  color: var(--info-color);
 }
