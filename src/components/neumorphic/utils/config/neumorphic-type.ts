@@ -1,5 +1,5 @@
 
-export type ButtonSizeType = 'large' | 'normal' | 'small' | 'mini';
+export type ButtonSizeType = 'large' | 'normal' | 'small' | 'mini' | 'supermini';
 
 export type ShadowType =  'normal' | 'light';
 

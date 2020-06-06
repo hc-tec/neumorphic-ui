@@ -31,12 +31,14 @@ export default class NeumorphicBtn extends Vue {
     'padding': this.getButtonSize(this.size)
   }
 
+  // 按钮大小配置
   getButtonSize(size: ButtonSizeType): string {
     return {
       'large': '15px 50px',
       'normal': '12px 40px',
       'small': '8px 30px',
-      'mini': '6px 15px'
+      'mini': '6px 15px',
+      'supermini': '2px 6px'
     }[size];
   }
 

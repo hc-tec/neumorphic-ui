@@ -139,7 +139,7 @@ export default class Slider extends Vue {
   z-index: 100;
   border-radius: inherit;
   background: var(--linear-color);
-  transition: width .2s;
+  transition: width .1s;
 }
 .neumorphic-slider-tooltip {
   position: absolute;
@@ -154,7 +154,7 @@ export default class Slider extends Vue {
   color: var(--second-color);
   box-shadow: var(--shadow);
   opacity: 0;
-  transition: opacity .3s ease;
+  transition: opacity .2s ease;
 }
 
 </style>
