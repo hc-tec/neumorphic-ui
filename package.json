@@ -1,11 +1,21 @@
 {
-  "name": "neumorphic",
-  "version": "0.1.0",
-  "private": true,
+  "name": "neumorphic-ui-vue",
+  "version": "1.0.0",
+  "description": "Neumorphic Style UI By Vue.js --Test",
+  "main": "index.js",
+  "private": false,
+  "keywords": [
+    "neumorphic",
+    "vue",
+    "components"
+  ],
+  "author": "Titto",
+  "license": "ISC",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "lib": "vue-cli-service build --target lib --name neumorphic --dest lib packages/index.ts"
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -21,6 +31,7 @@
     "@vue/cli-service": "~4.4.0",
     "node-sass": "^4.12.0",
     "sass-loader": "^8.0.2",
+    "tern": "^0.24.3",
     "typescript": "~3.9.3",
     "vue-template-compiler": "^2.6.11"
   },
@@ -28,5 +39,16 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hc-tec/neumorphic-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hc-tec/neumorphic-ui/issues"
+  },
+  "homepage": "https://github.com/hc-tec/neumorphic-ui#readme"
 }
