@@ -21,9 +21,40 @@
       @page-change="pageChange($event)">
     </pagi> -->
 
-    <tooltip content="这是一段提示文字">
+    <!-- <tooltip content="这是一段提示文字">
       <slider style="width:500px"></slider>
-    </tooltip>
+    </tooltip> -->
+    
+    <!-- <neu-table :tableHead="tableHead">
+      <neu-table-row 
+        v-for="rowData in tableData" 
+        :key="rowData ? rowData[Object.keys(rowData)[0]] : Math.random(1, 100)"
+        :tableRowData="rowData">
+      </neu-table-row>
+    </neu-table> -->
+
+    <neu-nav 
+      mode="vertical"
+      :router="false"
+      >
+      <!-- <template slot="title">
+        <h3 style="text-align:center">API 目录</h3>
+      </template> -->
+      <neumorphicNavItem 
+        link="http://baidu.com" 
+        icon="fa fa-bitcoin"
+        color="red">
+        Hello
+      </neumorphicNavItem>
+      <neumorphicNavItem color="green" link="/123" icon="fa fa-bitcoin">
+      </neumorphicNavItem>
+      <neumorphicNavItem color="#000" link="/123" icon="fa fa-bitcoin">
+      </neumorphicNavItem>
+    </neu-nav>
+
+    <btn icon="fa fa-bitcoin">
+      
+    </btn>
   
   </div>
 </template>
@@ -37,15 +68,22 @@ import pagi from './components/neumorphic/pagination/pagination.vue'
 import btn from './components/neumorphic/button/button.vue'
 import slider from './components/neumorphic/slider/slider.vue'
 import tooltip from './components/neumorphic/tooltip/tooltip.vue'
-
+import _table from './components/neumorphic/table/table.vue'
+import _tableColumn from './components/neumorphic/table/tableRow.vue'
+import neuNav from './components/neumorphic/nav/nav.vue'
+import neumorphicNavItem from './components/neumorphic/nav/nav-item.vue'
 @Component({
   components: {
+    'neu-nav': neuNav,
     neu,
     neuPane,
     pagi,
     btn,
     slider,
-    tooltip
+    tooltip,
+    'neu-table': _table,
+    'neu-table-row': _tableColumn,
+    neumorphicNavItem
   }
 })
 export default class Single_test extends Vue {
@@ -63,6 +101,26 @@ export default class Single_test extends Vue {
       details: 'xxxxxx'
     }
   ]
+
+  tableHead: string[] = ['product', 'price', '备注'];
+
+  tableData: Array<Record<string, string>> = [
+    {
+      'product': 'Quantum Tantrum',
+      'price': '$35.99',
+      'www': 'ewaishuom'
+    },
+    {
+      'product': 'Selyodochka	',
+      'price': '$9.99',
+      'www': ''
+    },
+    {
+      'product': 'Walkie-talkie',
+      'price': '$13.59',
+      'www': ''
+    }
+  ];
 
   currentPage: number = 5;
   

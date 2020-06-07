@@ -5,16 +5,23 @@
     :style="neumorphicButtonStyle"
     :disabled="disabled"
     @click="$emit('click', $event)">
-    <slot></slot>
+    <i :class="icon" v-if="icon"></i>  
+     <slot></slot>
   </button>
 </template>
 <script lang='ts'>
-import { Component, Vue, Prop, Emit } from 'vue-property-decorator'
-import { ButtonSizeType } from '../utils/config/neumorphic-type'
+import { Component, Vue, Prop, Emit, Watch } from 'vue-property-decorator'
+import { ButtonSizeType, ColorType, AnchorSizeType, RadiusType } from '../utils/config/neumorphic-type'
 @Component
 export default class NeumorphicBtn extends Vue {
   @Prop({ type: Boolean, default: false })
   circle!: boolean;
+
+  @Prop({type: String, default: 'info'})
+  color!: ColorType;
+
+  @Prop()
+  icon?: string;
 
   @Prop({default: 'normal'})
   size!: ButtonSizeType;
@@ -22,13 +29,24 @@ export default class NeumorphicBtn extends Vue {
   @Prop({default: false})
   disabled!: boolean;
 
+  @Watch('color')
+  colorChange(newValue: ColorType) {
+    this.neumorphicButtonStyle['color'] = this.getButtonColor(newValue);
+  }
+
+  @Watch('size')
+  sizeChange(newValue: ButtonSizeType) {
+    this.neumorphicButtonStyle['padding'] = this.getButtonSize(newValue);
+  }
+
   neumorphicButtonClass: Record<string, boolean> = {
     'neumorphic-btn': true,
     'neumorphic-btn-circle': this.circle
   }
 
   neumorphicButtonStyle: Record<string, string> = {
-    'padding': this.getButtonSize(this.size)
+    'padding': this.getButtonSize(this.size),
+    'color': this.getButtonColor(this.color) || this.color
   }
 
   // 按钮大小配置
@@ -41,6 +59,19 @@ export default class NeumorphicBtn extends Vue {
       'supermini': '2px 6px'
     }[size];
   }
+
+  // 颜色配置
+  getButtonColor(color: ColorType): string {
+    return {
+      'primary': '#66ccff',
+      'success': '#26de81',
+      'danger': '#e55039',
+      'warning': '#dcc021',
+      'info': '#84817a'
+    }[color];
+  }
+
+  
 
 }
 </script>
@@ -66,10 +97,17 @@ export default class NeumorphicBtn extends Vue {
   box-shadow: var(--inner-shadow);
 }
 .neumorphic-btn-circle {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  padding: 0;
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50% !important;
+  padding: 0 !important;
+  justify-content: center !important;
+  align-items: center !important;
+  box-shadow: var(--shadow) !important;
+  opacity: 1 !important;
+}
+.neumorphic-btn-circle:active {
+  box-shadow: var(--inner-shadow) !important;
 }
 .neumorphic-btn:disabled {
   background-color: var(--disabled-bgcolor);

@@ -86,7 +86,7 @@
   --divider-radius: .5rem;
 }
 
-html, body {
+* {
   margin: 0;
   padding: 0;
 }
