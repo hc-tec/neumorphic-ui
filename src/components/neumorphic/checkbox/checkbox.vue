@@ -1,5 +1,4 @@
 <template>
-  <div class="neumorphic-checkbox-wrapper">
     <div class="neumorphic-checkbox-content">
       <span
         :class="neumorphicCheckBoxClass">
@@ -7,20 +6,19 @@
           ref="neumorphicCheckBox"
           :class="neumorphicCheckBoxInputClass"
           type="chechbox"
-          :value="value"
-          :name="label"
-          @click="change($event)"
-          :disabled="disabled">
+          :name="name"
+          :disabled="disabled"
+          @click="change($event)">
         <i class="fa fa-check-square"></i>
       </span>
+      <neumorphic-label class="neumorphic-checkbox-slot">
+        <slot></slot>
+      </neumorphic-label>
     </div>
-    <neumorphic-label class="neumorphic-checkbox-slot">
-      <slot></slot>
-    </neumorphic-label>
-  </div>
+    
 </template>
 <script lang='ts'>
-import { Component, Vue, Model, Ref, Prop, Watch } from 'vue-property-decorator'
+import { Component, Vue, Model, Ref, Prop, Watch, Inject, Provide } from 'vue-property-decorator'
 import neumorphicLabel from '../label/label.vue'
 @Component({
   components: {
@@ -29,34 +27,39 @@ import neumorphicLabel from '../label/label.vue'
 })
 export default class Checkbox extends Vue {
 
+  neumorphicCheckBox!: HTMLInputElement;
+
+  @Inject('checkboxGroup')
+  checkboxGroup!: any;
+
   checked!: boolean;
 
   @Prop()
-  label!: string | number;
+  name!: string | number;
 
   @Prop({default: false})
   disabled!: boolean;
   
-  @Model('change', {type: String})
-  value!: string;
+  // @Model('change')
+  // value!: string | boolean;
 
-  @Watch('value')
-  // 此监测函数主要是为了 兄弟组件间的双向数据绑定 
-  // 以防多个相同组件绑定到了同一个数据而导致数据更新不及时
-  watchValueChange(newValue: string | number, oldValue: string | number) {
-    this.checked = (newValue === (this.$refs.neumorphicCheckBox as HTMLInputElement).name);
-    this.neumorphicCheckBoxClass['neumorphic-checkbox-checked'] = this.checked;
-  }
+  // @Watch('value')
+  // // 此监测函数主要是为了 兄弟组件间的双向数据绑定 
+  // // 以防多个相同组件绑定到了同一个数据而导致数据更新不及时
+  // watchValueChange(newValue: string | number, oldValue: string | number) {
+  //   (this.checkboxGroup.checkList as any[]).indexOf(this.neumorphicCheckBox.name) !== -1 &&
+  //   (this.neumorphicCheckBox.checked = true)
+  //   this.neumorphicCheckBoxClass['neumorphic-checkbox-checked'] = this.neumorphicCheckBox.checked;
+  // }
 
   change(event: any) {
-    this.checked = !this.checked;
+    this.neumorphicCheckBox.checked = ! this.neumorphicCheckBox.checked;
+    this.checked = this.neumorphicCheckBox.checked;
     // 强制 类 更新
     this.neumorphicCheckBoxClass['neumorphic-checkbox-checked'] = this.checked;
-    if(this.checked){
-      this.$emit('change', event.target.value); 
-    }
-    else
-      this.$emit('change', '');
+    
+    this.checkboxGroup.tmp_checkList = this.checkboxGroup.getCheckList();
+    this.checkboxGroup.checkListChange(this.checkboxGroup.tmp_checkList);
   }
 
   neumorphicCheckBoxClass: Record<string, boolean> = {
@@ -71,25 +74,24 @@ export default class Checkbox extends Vue {
   }
 
   mounted() {
-    this.checked = (this.value === (this.$refs.neumorphicCheckBox as HTMLInputElement).name);
-    this.neumorphicCheckBoxClass['neumorphic-checkbox-checked'] = this.checked;
+    this.neumorphicCheckBox = this.$refs.neumorphicCheckBox as HTMLInputElement;
+    (this.checkboxGroup.checkList as any[]).indexOf(this.neumorphicCheckBox.name) !== -1 &&
+    (this.neumorphicCheckBox.checked = true)
+    this.neumorphicCheckBoxClass['neumorphic-checkbox-checked'] = this.neumorphicCheckBox.checked;
   }
   
 }
 </script>
 <style scoped>
-.neumorphic-checkbox-wrapper {
-  display: inline-block;
-  margin-right: 30px;
-}
 .neumorphic-checkbox-content {
   display: inline-block;
+  margin-right: 30px;
 }
 .neumorphic-checkbox {
   box-shadow: var(--shadow);
   cursor: pointer;
   position: relative;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   border-radius: var(--small-radius);

@@ -37,9 +37,9 @@
       mode="vertical"
       :router="false"
       >
-      <!-- <template slot="title">
-        <h3 style="text-align:center">API 目录</h3>
-      </template> -->
+      <template slot="title">
+        <h3>API 目录</h3>
+      </template>
       <neumorphicNavItem 
         link="http://baidu.com" 
         icon="fa fa-bitcoin"
@@ -52,9 +52,13 @@
       </neumorphicNavItem>
     </neu-nav>
 
-    <btn icon="fa fa-bitcoin">
-      
-    </btn>
+    <checkboxGroup v-model="check">
+      <checkbox name="111">xxx</checkbox>
+      <checkbox name="222">xxx</checkbox>
+    </checkboxGroup>
+
+    {{ check }}
+
   
   </div>
 </template>
@@ -72,8 +76,12 @@ import _table from './components/neumorphic/table/table.vue'
 import _tableColumn from './components/neumorphic/table/tableRow.vue'
 import neuNav from './components/neumorphic/nav/nav.vue'
 import neumorphicNavItem from './components/neumorphic/nav/nav-item.vue'
+import checkbox from './components/neumorphic/checkbox/checkbox.vue'
+import checkboxGroup from './components/neumorphic/checkbox/chechboxGroup.vue'
 @Component({
   components: {
+    checkbox,
+    checkboxGroup,
     'neu-nav': neuNav,
     neu,
     neuPane,
@@ -87,6 +95,9 @@ import neumorphicNavItem from './components/neumorphic/nav/nav-item.vue'
   }
 })
 export default class Single_test extends Vue {
+
+  check: string[] = ['222', '111'];
+
   collapse: Array<Record<string, string>> = [
     {
       title: '姓名',
