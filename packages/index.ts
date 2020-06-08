@@ -1,56 +1,61 @@
-import Anchor from './anchor/index';
-import Avatar from './avatar/index';
-import BackToHead from './backToHead/index';
-import Button from './button/index';
-import CheckBox from './checkbox/index';
-import CheckBoxGroup from './checkboxGroup/index';
-import Collapse from './collapse/index';
-import CollapseItem from './collapseItem/index';
-import Divider from './hr/index';
-import Input from './input/index';
-import Label from './label/index';
+import NeuAnchor from './anchor/index';
+import NeuAvatar from './avatar/index';
+import NeuBackTOHead from './backToHead/index';
+import NeuButton from './button/index';
+import NeuCheckBox from './checkbox/index';
+import NeuCheckBoxGroup from './checkboxGroup/index';
+import NeuCollapse from './collapse/index';
+import NeuCollapseItem from './collapseItem/index';
+import NeuDivider from './hr/index';
+import NeuInput from './input/index';
+import NeuLabel from './label/index';
 import MessageBox from './messageBox/index';
-import NavMenu from './nav/index';
-import NavMenuItem from './navItem/index';
-import Option from './option/index';
-import Pagination from './pagination/index';
-import Radio from './radio/index';
-import Select from './select/index';
-import Slider from './slider/index';
-import Switch from './switch/index';
-import Table from './table/index';
-import TableRow from './tableRow/index';
-import Tabs from './tabs/index';
-import TabPane from './tabPane/index';
-import Tag from './tag/index';
-import Tooltip from './tooltip/index';
+import NeuNavMenu from './nav/index';
+import NeuNavMenuItem from './navItem/index';
+import NeuOption from './option/index';
+import NeuPagination from './pagination/index';
+import NeuRadio from './radio/index';
+import NeuSelect from './select/index';
+import NeuSlider from './slider/index';
+import NeuSwitch from './switch/index';
+import NeuTable from './table/index';
+import NeuTableRow from './tableRow/index';
+import NeuTabs from './tabs/index';
+import NeuTabPane from './tabPane/index';
+import NeuTag from './tag/index';
+import NeuTooltip from './tooltip/index';
+
+import './theme-chalk/index.css';
+import './utils/ts/throttle';
+import './utils/config/neumorphic-type';
+
 
 const components = [
-    Anchor
-  , Avatar
-  , BackToHead
-  , Button
-  , CheckBox
-  , CheckBoxGroup
-  , Collapse
-  , CollapseItem
-  , Divider
-  , Input
-  , Label
-  , NavMenu
-  , NavMenuItem
-  , Option
-  , Pagination
-  , Radio
-  , Select
-  , Slider
-  , Switch
-  , Table
-  , TableRow
-  , Tabs
-  , TabPane
-  , Tag
-  , Tooltip,
+    NeuAnchor
+  , NeuAvatar
+  , NeuBackTOHead
+  , NeuButton
+  , NeuCheckBox
+  , NeuCheckBoxGroup
+  , NeuCollapse
+  , NeuCollapseItem
+  , NeuDivider
+  , NeuInput
+  , NeuLabel
+  , NeuNavMenu
+  , NeuNavMenuItem
+  , NeuOption
+  , NeuPagination
+  , NeuRadio
+  , NeuSelect
+  , NeuSlider
+  , NeuSwitch
+  , NeuTable
+  , NeuTableRow
+  , NeuTabs
+  , NeuTabPane
+  , NeuTag
+  , NeuTooltip,
 ];
 
 
@@ -58,7 +63,7 @@ const install = (Vue: any) => {
   if ((install as any).installed) { return; }
 
   components.forEach((component) => {
-    Vue.component(component.name, component);
+    Vue.component('neu-' + component.name.toLowerCase(), component);
   });
 
   Vue.prototype.$message = MessageBox;
@@ -72,32 +77,32 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export default {
     install
-  , Anchor
-  , Avatar
-  , BackToHead
-  , Button
-  , CheckBox
-  , CheckBoxGroup
-  , Collapse
-  , CollapseItem
-  , Divider
-  , Input
-  , Label
+  , NeuAnchor
+  , NeuAvatar
+  , NeuBackTOHead
+  , NeuButton
+  , NeuCheckBox
+  , NeuCheckBoxGroup
+  , NeuCollapse
+  , NeuCollapseItem
+  , NeuDivider
+  , NeuInput
+  , NeuLabel
   , MessageBox
-  , NavMenu
-  , NavMenuItem
-  , Option
-  , Pagination
-  , Radio
-  , Select
-  , Slider
-  , Switch
-  , Table
-  , TableRow
-  , Tabs
-  , TabPane
-  , Tag
-  , Tooltip,
+  , NeuNavMenu
+  , NeuNavMenuItem
+  , NeuOption
+  , NeuPagination
+  , NeuRadio
+  , NeuSelect
+  , NeuSlider
+  , NeuSwitch
+  , NeuTable
+  , NeuTableRow
+  , NeuTabs
+  , NeuTabPane
+  , NeuTag
+  , NeuTooltip,
 };
 
 

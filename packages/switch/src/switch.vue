@@ -15,7 +15,7 @@
 import { Component, Vue, Prop, Model, Watch } from 'vue-property-decorator'
 
 @Component
-export default class SwitchComponent extends Vue {
+export default class Switcher extends Vue {
 
   checked: boolean = false;
 

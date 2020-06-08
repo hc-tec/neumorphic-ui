@@ -1,0 +1,154 @@
+:root {
+  /* 主要颜色 */
+  --primary-color: #868b98;
+  --primary-darker-color: #5e636f;
+  --primary-bgcolor: transparent;
+
+  --success-color: #26de81;
+  --warning-color: #dcc021;
+  --error-color: #e55039;
+  --info-color: #84817a;
+
+  /* 次要颜色 */
+  --second-color: #66ccff;
+
+  /* 渐变色 */
+  --linear-color: linear-gradient(45deg, #5fe8dc, #66ccff);
+
+  /* 禁用颜色 */
+  --disabled-color: #c0c4cc !important;
+  --disabled-bgcolor: #d4d5d7 !important;
+
+  /* 特殊处理：某些"不变"元素的颜色 */
+  --unvary-elem-color: #7b7e8c;
+
+  /* 特殊处理：开关颜色 */
+  --switch-on-circle-bgcolor: #fff;
+  --switch-off-circle-bgcolor: #9baacf;
+  --switch-disabled-bgcolor: #f6ebeb !important;
+
+  /* 特殊处理：选择器选项颜色 */
+  --option-color: #7b7e8c;
+  --option-bgcolor: rgb(214, 223, 234);
+  --option-disabled-bgcolor: none !important;
+
+  /* 特殊处理：滑块按钮颜色 */
+  --slider-button-bgcolor: #fff;
+  --slider-button-shadow: 0px .1rem .3rem 0px #66ccff;
+
+  /* 特殊处理：选择器禁用背景色 */
+  --select-disabled-bgcolor: #d4d5d7db !important;
+
+  /* 特殊处理：单选按钮中心圆背景色 */
+  --radio-circle-bgcolor: #61677C;
+  --radio-circle-disabled-bgcolor: #ced0d8 !important;
+
+  /* 特殊处理：分割线背景色 */
+  --divider-bgcolor: #f8f9fb;
+
+  /* 主要阴影 */
+  --shadow: 0.3rem 0.3rem 0.6rem hsla(215, 46%, calc(93% - 15%), 0.8), 
+            calc(-1 * 0.3rem) calc(-1 * 0.3rem) 0.6rem hsla(215, 46%, calc(93% + 15%), 0.8);
+  /* 点击等情况的凹陷阴影 */
+  --inner-shadow: inset 0.3rem 0.3rem 0.6rem hsla(215, 46%, calc(93% - 15%), 0.8), 
+                  inset calc(-1 * 0.3rem) calc(-1 * 0.3rem) 0.6rem hsla(215, 46%, calc(93% + 15%), 0.8);
+  /* 特殊处理：输入框阴影 */
+  --input-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+  /* 特殊处理：输入框输入时阴影 */
+  --input-focus-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+  /* 特殊处理：输入框禁用时阴影 */
+  --input-disabled-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF !important;
+  /* 特殊处理：分割线阴影 */
+  --divider-shadow: 0 0 transparent, 0 0 transparent, inset 3px 3px 5px rgba(0, 0, 0, 0.1), inset -3px -3px 5px white;
+  /* 特殊处理：滑块阴影 */
+  --slider-shadow: inset 0.3rem 0.3rem 0.6rem hsla(215, 46%, calc(93% - 15%), 0.8), 
+                   inset calc(-1 * 0.3rem) calc(-1 * 0.3rem) 0.6rem hsla(215, 46%, calc(93% + 15%), 0.8);
+  /* 文字阴影 */
+  --text-shadow: 1px 1px 0 #FFF;
+
+  /* 特殊处理：头像阴影 */
+  --avatar-shadow: 0px 0px 2px #5f5f5f,
+                   0px 0px 0px 5px #ecf0f3,
+                   8px 8px 15px #a7aaaf,
+                   -8px -8px 15px #ffffff;
+
+  /* 主要文字大小 */
+  --primary-font-size: .9rem;
+  --bigger-font-size: 1.1rem;
+  --large-font-size: 1.5rem;
+
+  /* 圆弧大小 */
+  --small-radius: .3rem;
+  --primary-radius: 1rem;
+  --large-radius: 1.6rem;
+
+  /* 特殊处理：分割线弧度 */
+  --divider-radius: .5rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.neumorphic-messagebox {
+  width: 20rem;
+  height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: unset;
+  align-items: center;
+  position: fixed;
+  left: 50%;
+  top: 120px;
+  transform: translate(-50%, -100px);
+  transition: transform .5s, height .5s;
+  font-size: var(--primary-font-size);
+}
+@keyframes transout {
+  0% {
+    transform: translate(-50%, -100px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.neumorphic-messagebox > * {
+  width: 20rem;
+  height: 3rem;
+  border-radius: var(--small-radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: unset;
+  align-items: center;
+  animation: transout .5s;
+  transition: all .5s;
+  font-size: var(--primary-font-size);
+  margin-bottom: 10px;
+}
+.neumorphic-messagebox-text {
+  color: var(--primary-color);
+  margin-left: 2rem;
+  text-shadow: var(--text-shadow);
+}
+.neumorphic-messagebox-text-success {
+  color: var(--success-color);
+}
+.neumorphic-messagebox-text-warning {
+  color: var(--warning-color);
+}
+.neumorphic-messagebox-text-error {
+  color: var(--error-color);
+}
+.neumorphic-messagebox-text-info {
+  color: var(--info-color);
+}

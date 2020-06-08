@@ -1,9 +1,13 @@
 {
   "name": "neumorphic-ui-vue",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Neumorphic Style UI By Vue.js --Test",
-  "main": "index.js",
+  "main": "lib/neumorphic.common.js",
   "private": false,
+  "files": [
+    "lib",
+    "packages"
+  ],
   "keywords": [
     "neumorphic",
     "vue",
@@ -29,9 +33,6 @@
     "@vue/cli-plugin-router": "~4.4.0",
     "@vue/cli-plugin-typescript": "~4.4.0",
     "@vue/cli-service": "~4.4.0",
-    "node-sass": "^4.12.0",
-    "sass-loader": "^8.0.2",
-    "tern": "^0.24.3",
     "typescript": "~3.9.3",
     "vue-template-compiler": "^2.6.11"
   },
@@ -43,6 +44,7 @@
   "directories": {
     "lib": "lib"
   },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hc-tec/neumorphic-ui.git"

@@ -1,9 +1,6 @@
 <template>
   <div id="app">
     <router-view />
-    <Radio></Radio>
-    <Avatar></Avatar>
-    <Slider></Slider>
   </div>
 </template>
 <script lang='ts'>

@@ -21,7 +21,7 @@ import neumorphicLabel from '../../label/src/label.vue'
     'neumorphic-label': neumorphicLabel
   }
 })
-export default class NeumorphicInput extends Vue {
+export default class Input extends Vue {
 
   @Prop() 
   label?: string;
@@ -49,9 +49,7 @@ export default class NeumorphicInput extends Vue {
 }
 </script>
 <style scoped>
-.neumorphic-input-content {
-  /* // display: inline-block; */
-}
+
 .neumorphic-input {
   font-family: 'Poppins', sans-serif;
   display: inline-block;

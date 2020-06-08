@@ -5,7 +5,7 @@
 import { Component, Vue, Prop } from 'vue-property-decorator'
 
 @Component
-export default class Hr extends Vue {
+export default class Divider extends Vue {
 
   @Prop({default: 'neumorphic'})
   type!: 'neumorphic' | 'linear';
