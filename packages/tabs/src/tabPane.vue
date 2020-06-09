@@ -29,7 +29,7 @@ export default class TabPane extends Vue {
 <style scoped>
 .neumorphic-tab-pane {
   width: 100%;
-  height: 100%;
+  height: 70%;
   min-height: 10rem;
   padding: 20px;
   color: var(--primary-color);

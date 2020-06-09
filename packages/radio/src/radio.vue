@@ -31,7 +31,7 @@ export default class Radio extends Vue {
   checked: boolean = false;
 
   @Prop()
-  label!: string | number;
+  label!: string | number | boolean;
 
   @Prop({type: Boolean, default: false})
   disabled!: boolean;
@@ -40,7 +40,7 @@ export default class Radio extends Vue {
   value!: string;
 
   @Watch('value')
-  noEquel(newValue: string | number, oldValue: string | number): void{
+  noEquel(newValue: string | number | boolean, oldValue: string | number | boolean): void{
     if(this.label !== newValue) {
       this.checked = false;
     } else {
@@ -132,10 +132,10 @@ export default class Radio extends Vue {
   background: var(--second-color);
 }
 .neumorphic-radio-disabled {
-  cursor: not-allowed;
+  cursor: not-allowed !important;
 }
 .neumorphic-radio-disabled::after {
-  background: var(--radio-circle-disabled-bgcolor);
+  background: var(--radio-circle-disabled-bgcolor) !important;
 }
 
 </style>

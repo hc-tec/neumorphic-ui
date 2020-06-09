@@ -5,15 +5,14 @@
     :style="neumorphicButtonStyle"
     :disabled="disabled"
     @click="$emit('click', $event)">
-    <i :class="icon" v-if="icon"></i>  
-     <slot></slot>
+    <i :class="icon" v-if="icon"></i> <slot></slot>
   </button>
 </template>
 <script lang='ts'>
 import { Component, Vue, Prop, Emit, Watch } from 'vue-property-decorator'
 import { ButtonSizeType, ColorType, AnchorSizeType, RadiusType } from '../../utils/config/neumorphic-type'
 @Component
-export default class NeumorphicBtn extends Vue {
+export default class Button extends Vue {
   @Prop({ type: Boolean, default: false })
   circle!: boolean;
 
@@ -79,6 +78,7 @@ export default class NeumorphicBtn extends Vue {
 .neumorphic-btn {
   border: none;
   outline: none;
+  display: inline;
   /* padding: 12px 40px; */
   letter-spacing: 0.1em;
   color: var(--primary-color);

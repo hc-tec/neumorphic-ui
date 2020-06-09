@@ -1,7 +1,7 @@
 {
   "name": "neumorphic-ui-vue",
-  "version": "1.0.1",
-  "description": "Neumorphic Style UI By Vue.js --Test",
+  "version": "1.0.2",
+  "description": "Neumorphic Style UI By Vue",
   "main": "lib/neumorphic.common.js",
   "private": false,
   "files": [
@@ -11,7 +11,8 @@
   "keywords": [
     "neumorphic",
     "vue",
-    "components"
+    "components",
+    "ui"
   ],
   "author": "Titto",
   "license": "ISC",

@@ -27,7 +27,7 @@ export default class Divider extends Vue {
 </script>
 <style scoped>
 .neumorphic-hr {
-  width: 50%;
+  width: 100%;
   height: 7px;
   border: 0;
   border-radius: var(--divider-radius);

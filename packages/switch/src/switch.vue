@@ -55,12 +55,14 @@ export default class Switcher extends Vue {
   change(event: any) {
     this.checked = !this.checked;
     this.neumorphicSwitchLabelClass['neumorphic-switch-label-checked'] = this.checked;
+    
     this.$emit('change', this.checked);
   }
 
   mounted(){
     this.checked = this.value === true;
     this.neumorphicSwitchLabelClass['neumorphic-switch-label-checked'] = this.checked;
+    this.neumorphicSwitchInputClass['neumorphic-switch-input-disabled'] = this.disabled;
   }
   
 }
@@ -123,11 +125,13 @@ export default class Switcher extends Vue {
   left: 57%;
   background: var(--switch-on-circle-bgcolor);
 }
+.neumorphic-switch-input:disabled,
 .neumorphic-switch-input-disabled, 
 .neumorphic-switch-label-disabled {
   cursor: not-allowed !important;
-  background: var(--disabled-bgcolor);
+  background: var(--disabled-bgcolor) !important;
 }
+
 .neumorphic-switch-label-disabled::before {
   opacity: 0;
 }

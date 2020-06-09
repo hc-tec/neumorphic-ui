@@ -28,15 +28,15 @@ export default class Tag extends Vue {
 
   handleClose() {
     // 点击关闭按钮触发的事件 
-    const tagText = (this.$refs.neumorphicTagText as HTMLParagraphElement).innerHTML
-    this.$emit('close', tagText);
+    const tag = (this.$refs.neumorphicTagText as HTMLParagraphElement)
+    this.$emit('close', tag);
   }
 }
 </script>
 <style scoped>
 .neumorphic-tag {
-  min-width: 5rem;
-  min-height: 2rem;
+  min-width: 7rem;
+  min-height: 3rem;
   border-radius: var(--small-radius);
   box-shadow: var(--shadow);
   display: inline-flex;
@@ -70,8 +70,8 @@ export default class Tag extends Vue {
   color: var(--second-color);
 }
 .neumorphic-tag-text {
-  font-size: var(--primary-font-size);
+  font-size: 14px;
   color: var(--primary-color);
-  margin: 0 2rem 0 .5rem;
+  margin: 0 2rem 0 1rem;
 }
 </style>

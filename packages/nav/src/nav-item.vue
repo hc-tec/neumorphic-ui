@@ -60,5 +60,6 @@ export default class NavItem extends Vue {
   display: flex;
   list-style: none;
   margin-bottom: .3rem;
+  margin-right: .3rem;
 }
 </style>

@@ -49,7 +49,7 @@ export default class Anchor extends Vue {
 </script>
 <style scoped>
 .neumorphic-anchor {
-  display: flex;
+  display: inline-flex;
   font-size: var(--primary-font-size);
   opacity: .5;
   box-shadow: none;

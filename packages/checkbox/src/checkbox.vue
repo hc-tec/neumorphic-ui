@@ -9,7 +9,7 @@
           :name="name"
           :disabled="disabled"
           @click="change($event)">
-        <i class="fa fa-check-square"></i>
+        <i class="fa fa-check"></i>
       </span>
       <neumorphic-label class="neumorphic-checkbox-slot">
         <slot></slot>
@@ -129,9 +129,10 @@ export default class Checkbox extends Vue {
   margin-left: 10px;
   display: inline-block;
 }
+.neumorphic-checkbox-input:disabled,
 .neumorphic-checkbox-input-disabled,
 .neumorphic-checkbox-disabled {
   cursor: not-allowed !important;
-  color: var(--disabled-color);
+  color: var(--disabled-color) !important;
 }
 </style>

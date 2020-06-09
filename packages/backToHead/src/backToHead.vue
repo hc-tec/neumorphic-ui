@@ -18,7 +18,7 @@ import neumorphicButton from '../../button/src/button.vue';
     'neumorphic-button': neumorphicButton
   }
 })
-export default class BackToHead extends Vue {
+export default class BackToTop extends Vue {
 
    @Prop({type: Number, default: 50})
    right!: number;
@@ -40,6 +40,7 @@ export default class BackToHead extends Vue {
 
   mounted(){
     let lastScrollPosition = window.pageYOffset;
+    
     let button = this.$refs.neumorphicBackToHead as any;
     window.addEventListener("scroll",() => {
       const watchButtonPos = () => {

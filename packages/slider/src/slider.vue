@@ -101,7 +101,7 @@ export default class Slider extends Vue {
   height: 1rem;
   cursor: pointer;
   box-shadow: var(--slider-shadow);
-  border-radius: var(--primary-shadow);
+  border-radius: var(--primary-radius);
   position: relative;
   display: flex;
   justify-content: center;

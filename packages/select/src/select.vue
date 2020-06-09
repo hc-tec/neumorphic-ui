@@ -18,24 +18,17 @@
         @blur="activate($event)"
         :placeholder="placeholder"
         :disabled="disabled"
-        v-model="tmp_value.label">
+        v-model="tmp_value">
       <ul
         ref="neumorphicSelectList"
         class="neumorphic-select neumorphic-select-list">
-        <neumorphic-option 
-          v-for="option in optionList"
-          v-model="tmp_value" 
-          :key="option.value"
-          :value="option.value"
-          :disabled="option.disabled">
-          {{ option.label }}
-        </neumorphic-option>
+        <slot></slot>
       </ul>
     </div>
   </div>
 </template>
 <script lang='ts'>
-import { Component, Vue, Prop, Watch, Model } from 'vue-property-decorator';
+import { Component, Vue, Prop, Watch, Model, Provide } from 'vue-property-decorator';
 import neumorphicOption from './option.vue';
 import neumorphicLabel from '../../label/src/label.vue';
 @Component({
@@ -46,38 +39,46 @@ import neumorphicLabel from '../../label/src/label.vue';
 })
 export default class Select extends Vue {
 
-  arrow_back: boolean = true;
+  public arrow_back: boolean = true;
+
+  public lastLiElemCheckIndex: number = 0;
 
   @Prop()
-  label?: string;
-
-  @Prop()
-  optionList?: Array<Record<string, any>>;
+  public label?: string;
 
   @Prop({type: String, default: '请选择'})
-  placeholder!: string;
+  public placeholder!: string;
 
   @Prop({default: false})
-  disabled!: boolean;
+  public disabled!: boolean;
 
   @Model('change')
-  value!: string | number | boolean;
+  @Provide('selectValue')
+  public value!: string | number | boolean;
 
-  tmp_value: Record<string, any> = {
-    value: this.value,
-    label: '',
-  }
+  @Provide('selector')
+  public selector = this;
+
+  public tmp_value: string | number | boolean = this.value;
 
   @Watch('value')
   watchValueChange(newValue: string | number | boolean) {
-    this.tmp_value.value = newValue;
+    this.tmp_value = newValue;
   }
 
-  activate(event: any) {
+  public emitChange(changeValue: string | number | boolean) {
+    this.$emit('change', changeValue);
+    const children = this.$children.slice(1);
+    for(let child of children) {
+      (child as any).tmpSelectValue = changeValue;
+    }
+  }
+
+  public activate(event: any) {
     let arrow = this.$refs.neumorphicSelectArrow as HTMLSpanElement;
     let list = this.$refs.neumorphicSelectList as HTMLUListElement;
     const type = event.type;
-    if(type === 'click' && this.arrow_back) {
+    if (type === 'click' && this.arrow_back) {
       arrow.style.transform = "rotate(90deg) translate(0, -50%)";
       this.optionListStyleChange(list, true);
       this.arrow_back = false;
@@ -86,14 +87,14 @@ export default class Select extends Vue {
       // 给予一定缓冲时间，留给 li 响应 click 事件
       setTimeout(() => {
         this.optionListStyleChange(list, false);
-        this.$emit('change', this.tmp_value.value);
       }, 200)
       this.arrow_back = true;
     }
+    
   }
 
-  optionListStyleChange(list: HTMLUListElement, extent: boolean) {
-    if(extent) {
+  private optionListStyleChange(list: HTMLUListElement, extend: boolean) {
+    if(extend) {
       list.style.opacity = '1';
       list.style.height = 'auto';
       list.style.padding = '10px 0';

@@ -9,7 +9,7 @@
 import { Component, Vue, Model, Provide, Watch, Prop, Inject } from 'vue-property-decorator'
 
 @Component
-export default class ChechboxGroup extends Vue {
+export default class CheckboxGroup extends Vue {
 
   @Provide('checkboxGroup')
   checkboxGroup = this;
