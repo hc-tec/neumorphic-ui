@@ -1,11 +1,9 @@
 {
   "name": "neumorphic-ui-vue",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Neumorphic Style UI By Vue",
-  "main": "lib/neumorphic.common.js",
-  "private": false,
+  "main": "packages/index.ts",
   "files": [
-    "lib",
     "packages"
   ],
   "keywords": [
@@ -43,7 +41,7 @@
     "not dead"
   ],
   "directories": {
-    "lib": "lib"
+    "lib": "packages"
   },
 
   "repository": {
