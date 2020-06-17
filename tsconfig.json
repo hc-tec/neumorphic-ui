@@ -35,7 +35,7 @@
     "tests/**/*.tsx", 
     "packages/neumorphic.d.ts",
     "packages/**/*.ts",
-    "packages/**/src/*.vue",
+    "packages/**/src/*.vue", "packages/neumorphic.js", "src/main.ts", "packages/switch/index.ts",
   ],
   "exclude": [
     "node_modules"

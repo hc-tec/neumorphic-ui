@@ -1,72 +1,95 @@
 <template>
-  <div id="all">
-    <!-- <backToTop />
-    <checkboxgroup>
-      <checkbox></checkbox>
-    </checkboxgroup> -->
-    <selecter v-model="selectValue">
-      <optioner
-        v-for="option in optionList"
-        :key="option.value"
-        :value="option.value">
-        {{ option.label }}
-      </optioner>
-    </selecter>
+  <div>
+    <!-- <div class="neumorphic-message-wrapper">
+      <div class="neumorphic-message-content">
+        <div class="neumorphic-message-header">lkasndoan</div>
+        <div class="neumorphic-message-body">
+          <p>请输入密码：</p>
+          <input class="neumorphic-input" style="width: 330px;" />
+        </div>
+        <div class="neumorphic-message-btn">
+          <button class="neumorphic-btn" style="padding: 12px 40px;color: var(--error-color)">取消</button>
+          <button class="neumorphic-btn" style="padding: 12px 40px;color: var(--second-color)">确定</button>
+        </div>
+      </div>
+    </div>
+    <div class="neumorphic-message-layer"></div> -->
+    <neumorphicButton @click="alert">Alert</neumorphicButton> -->
+    <neumorphicButton @click="confirm">confirm</neumorphicButton>
+    <neumorphicButton @click="prompt">prompt</neumorphicButton>
 
-    <tag>标签标签</tag>
 
+    <!-- <neumorphicButton circle>B</neumorphicButton>
+    <neumorphicRadio></neumorphicRadio>
+    <neumorphicInput 
+      prefixIcon="fa fa-bitcoin"
+      suffixIcon="fa fa-bitcoin"
+      v-model="value" 
+      :maxLength="1"
+    />
+      {{ value }} -->
   </div>
 </template>
 <script lang='ts'>
-import { Vue, Component } from 'vue-property-decorator'
-import backToTop from '../packages/backToHead/src/backToHead.vue'
-import checkbox from '../packages/checkbox/src/checkbox.vue'
-import checkboxgroup from '../packages/checkbox/src/checkboxGroup.vue'
-import selecter from '../packages/select/src/select.vue'
-import optioner from '../packages/select/src/option.vue'
-import switcher from '../packages/switch/src/switch.vue'
-import radio  from '../packages/radio/src/radio.vue'
-import tag from '../packages/tag/src/tag.vue'
+import { Component, Vue } from 'vue-property-decorator'
+import neumorphicButton from '../packages/button/src/button.vue'
+import neumorphicRadio from '../packages/radio/src/radio.vue'
+import neumorphicInput from '../packages/input/src/input.vue'
+import neumorphicCheckbox from '../packages/checkbox/src/checkbox.vue'
+import neumorphicCheckboxGroup from '../packages/checkbox/src/checkboxGroup.vue'
+import MessageBox from '../packages/messageBox/src/messageBox'
+import Message from '../packages/message/src/message'
 @Component({
   components: {
-    backToTop,
-    checkboxgroup,
-    checkbox,
-    selecter,
-    optioner,
-    switcher,
-    radio,
-    tag
+    neumorphicButton,
+    neumorphicRadio,
+    neumorphicInput,
+    neumorphicCheckbox,
+    neumorphicCheckboxGroup
   }
 })
 export default class Test extends Vue {
+  private value?: string = '123';
 
-  private optionList: Record<string, string>[] = [
-    {
-      'label': '第一个',
-      'value': '1'
-    },
-    {
-      'label': '第二个',
-      'value': '2'
-    },
-    {
-      'label': '第三个',
-      'value': '3'
-    },
-  ]
+  alert() {
+    const MESSAGE_CONFIG = {
+        title: '提示方框',
+        message: `<i class="fa fa-github"></i>`,
+        confirmBtnText: '<i class="fa fa-github"></i> 确认',
+        callback: (action: string) => (
+          Message.send({
+            message: action
+          })
+        ),
+      };
+    MessageBox.alert(MESSAGE_CONFIG)
+  }
 
-  selectValue: string = '2';
-  
+  confirm() {
+    const MESSAGE_CONFIG = {
+      resolve: (action: string) => {
+        Message.send({
+          message: action
+        })
+      },
+      reject: (action: string) => {
+        Message.send({
+          message: action
+        })
+      },
+    };
+    MessageBox.confirm(MESSAGE_CONFIG)
+  }
+
+  prompt() {
+    const config = {
+      resolve: (value: string) => {
+        console.log(value)
+      }
+    }
+    MessageBox.prompt(config)
+  }
 }
 </script>
 <style scoped>
-#all {
-  width: 100%;
-  text-align: center;
-
-}
-#all > * {
-  margin-bottom: 20px;
-}
 </style>

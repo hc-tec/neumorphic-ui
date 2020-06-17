@@ -12,7 +12,7 @@
           :class="neumorphicRadioInputClass"
           @change="change($event)">
       </span>
-      <neumorphic-label class="neumorphic-radio-slot">
+      <neumorphic-label ref="neumorphicRadioLabel" class="neumorphic-radio-slot">
         <slot></slot>
       </neumorphic-label>
     </div>
@@ -55,6 +55,12 @@ export default class Radio extends Vue {
     if(this.checked) {
       this.$emit('change', this.label);
     }
+  }
+
+  @Watch('disabled')
+  disabledChange(newValue: boolean) {
+    this.neumorphicRadioClass['neumorphic-radio-disabled'] = newValue;
+    this.neumorphicRadioInputClass['neumorphic-radio-disabled'] = newValue;
   }
 
   neumorphicRadioClass: Record<string, boolean> = {

@@ -37,20 +37,9 @@ export default class Checkbox extends Vue {
   @Prop()
   name!: string | number;
 
-  @Prop({default: false})
+  @Prop({type: Boolean, default: false})
   disabled!: boolean;
   
-  // @Model('change')
-  // value!: string | boolean;
-
-  // @Watch('value')
-  // // 此监测函数主要是为了 兄弟组件间的双向数据绑定 
-  // // 以防多个相同组件绑定到了同一个数据而导致数据更新不及时
-  // watchValueChange(newValue: string | number, oldValue: string | number) {
-  //   (this.checkboxGroup.checkList as any[]).indexOf(this.neumorphicCheckBox.name) !== -1 &&
-  //   (this.neumorphicCheckBox.checked = true)
-  //   this.neumorphicCheckBoxClass['neumorphic-checkbox-checked'] = this.neumorphicCheckBox.checked;
-  // }
 
   change(event: any) {
     this.neumorphicCheckBox.checked = ! this.neumorphicCheckBox.checked;
@@ -60,6 +49,11 @@ export default class Checkbox extends Vue {
     
     this.checkboxGroup.tmp_checkList = this.checkboxGroup.getCheckList();
     this.checkboxGroup.checkListChange(this.checkboxGroup.tmp_checkList);
+  }
+
+  @Watch('disabled')
+  disabledChange(newValue: boolean) {
+    this.neumorphicCheckBoxClass['neumorphic-checkbox-disabled'] = this.disabled;
   }
 
   neumorphicCheckBoxClass: Record<string, boolean> = {

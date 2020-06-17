@@ -4,7 +4,7 @@
   --primary-darker-color: #5e636f;
   --primary-bgcolor: transparent;
 
-  --success-color: #67C23A;
+  --success-color: #26de81;
   --warning-color: #dcc021;
   --error-color: #e55039;
   --info-color: #84817a;
@@ -50,12 +50,12 @@
   --shadow: 0.3rem 0.3rem 0.6rem hsla(215, 46%, calc(93% - 15%), 0.8), 
             calc(-1 * 0.3rem) calc(-1 * 0.3rem) 0.6rem hsla(215, 46%, calc(93% + 15%), 0.8);
   /* 点击等情况的凹陷阴影 */
-  --inner-shadow: 0 0 0        rgba(163,177,198,0.6), -0 -0 0    rgba(236, 240, 241, 0.6), 3px 3px 5px        rgba(163,177,198,0.6) inset, -3px -3px 3px rgba(255,255,255, 0.3) inset;
+  --inner-shadow: inset 0.3rem 0.3rem 0.6rem hsla(215, 46%, calc(93% - 15%), 0.8), 
+                  inset calc(-1 * 0.3rem) calc(-1 * 0.3rem) 0.6rem hsla(215, 46%, calc(93% + 15%), 0.8);
   /* 特殊处理：输入框阴影 */
-  --input-shadow: inset 2px 2px 4px #d1d9e6,inset -2px -2px 4px #f9f9f9;
+  --input-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
   /* 特殊处理：输入框输入时阴影 */
-  --input-focus-shadow: inset 4px 4px 4px #d1d9e6,
-                        inset -4px -4px 4px #f9f9f9;
+  --input-focus-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
   /* 特殊处理：输入框禁用时阴影 */
   --input-disabled-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF !important;
   /* 特殊处理：分割线阴影 */
@@ -152,79 +152,3 @@ a {
 .neumorphic-messagebox-text-info {
   color: var(--info-color);
 }
-@keyframes message-out {
-  from {
-    opacity: 0;
-  } to {
-    opacity: 1;
-  }
-}
-@keyframes layer-out {
-  from {
-    opacity: 0;
-  } to {
-    opacity: .5;
-  }
-}
-
-.neumorphic-message-wrapper,
-.neumorphic-message-layer {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-} 
-.neumorphic-message-wrapper {
-  text-align: center;
-  z-index: 2020;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation: message-out .3s;
-}
-.neumorphic-message-layer {
-  width: 100%;
-  height: 100%;
-  opacity: .5;
-  background: #000;
-  z-index: 2019;
-  animation: layer-out .3s;
-}
-.neumorphic-message-content {
-  position: relative;
-  top: -100px;
-  width: 420px;
-  z-index: 10;
-  background: #fff;
-  border-radius: var(--small-radius);
-  box-shadow: var(--shadow);
-  padding: 20px;
-  text-align: left;
-  overflow: hidden;
-}
-.neumorphic-message-content > * {
-  margin-bottom: 20px;
-}
-.neumorphic-message-header {
-  font-size: 18px;
-  line-height: 1;
-  color: var(--primary-darker-color);
-}
-.neumorphic-message-body {
-  font-size: 14px;
-  line-height: 2.4;
-  color: var(--primary-color);
-  padding-left: 10px;
-}
-.neumorphic-message-btn {
-  margin-bottom: 0;
-  text-align: right;
-}
-.neumorphic-message-btn > * {
-  margin-left: 10px;
-}
-
-
-
-

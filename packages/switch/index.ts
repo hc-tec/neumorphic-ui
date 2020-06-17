@@ -1,7 +1,7 @@
 import neumorphicSwitch from './src/switch.vue';
 
 (neumorphicSwitch as any).install = (Vue: any) => {
-  Vue.component('neu-' + neumorphicSwitch.name, neumorphicSwitch);
+  Vue.component('switcher', neumorphicSwitch);
 };
 
 export default neumorphicSwitch;

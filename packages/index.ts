@@ -1,15 +1,15 @@
 import NeuAnchor from './anchor/index';
 import NeuAvatar from './avatar/index';
-import NeuBackTOHead from './backToHead/index';
+import NeuBackToTop from './backToHead/index';
 import NeuButton from './button/index';
-import NeuCheckBox from './checkbox/index';
-import NeuCheckBoxGroup from './checkboxGroup/index';
+import NeuCheckbox from './checkbox/index';
+import NeuCheckboxGroup from './checkboxGroup/index';
 import NeuCollapse from './collapse/index';
 import NeuCollapseItem from './collapseItem/index';
 import NeuDivider from './hr/index';
 import NeuInput from './input/index';
 import NeuLabel from './label/index';
-import MessageBox from './messageBox/index';
+import Message from './message/index';
 import NeuNavMenu from './nav/index';
 import NeuNavMenuItem from './navItem/index';
 import NeuOption from './option/index';
@@ -30,13 +30,13 @@ import './utils/ts/throttle';
 import './utils/config/neumorphic-type';
 
 
-const components = [
+const components: Record<string, any> = {
     NeuAnchor
   , NeuAvatar
-  , NeuBackTOHead
+  , NeuBackToTop
   , NeuButton
-  , NeuCheckBox
-  , NeuCheckBoxGroup
+  , NeuCheckbox
+  , NeuCheckboxGroup
   , NeuCollapse
   , NeuCollapseItem
   , NeuDivider
@@ -55,40 +55,41 @@ const components = [
   , NeuTabs
   , NeuTabPane
   , NeuTag
-  , NeuTooltip,
-];
+  , NeuTooltip
+  ,
+};
 
 
 const install = (Vue: any) => {
   if ((install as any).installed) { return; }
 
-  components.forEach((component) => {
-    Vue.component('neu-' + component.name.toLowerCase(), component);
+  Object.keys(components)
+    .forEach((name: any) => {
+      Vue.component(name, components[name]);
   });
 
-  Vue.prototype.$message = MessageBox;
+  Vue.prototype.$message = Message;
 };
+import _Vue from 'vue';
+install(_Vue);
 
-
-if (typeof window !== 'undefined' && window.Vue) {
-  install(window.Vue);
-}
 
 
 export default {
     install
+  , components
   , NeuAnchor
   , NeuAvatar
-  , NeuBackTOHead
+  , NeuBackToTop
   , NeuButton
-  , NeuCheckBox
-  , NeuCheckBoxGroup
+  , NeuCheckbox
+  , NeuCheckboxGroup
   , NeuCollapse
   , NeuCollapseItem
   , NeuDivider
   , NeuInput
   , NeuLabel
-  , MessageBox
+  , Message
   , NeuNavMenu
   , NeuNavMenuItem
   , NeuOption

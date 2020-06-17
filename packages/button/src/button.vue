@@ -1,20 +1,24 @@
 <template>
   <button
+    ref="neumorphicButton"
     :class="neumorphicButtonClass"
     :circle="circle"
     :style="neumorphicButtonStyle"
     :disabled="disabled"
     @click="$emit('click', $event)">
-    <i :class="icon" v-if="icon"></i> <slot></slot>
+    <i :class="icon" v-if="icon" ref="neumorphicButtonIcon"></i> <slot></slot>
   </button>
 </template>
 <script lang='ts'>
 import { Component, Vue, Prop, Emit, Watch } from 'vue-property-decorator'
-import { ButtonSizeType, ColorType, AnchorSizeType, RadiusType } from '../../utils/config/neumorphic-type'
+import { ButtonSizeType, ColorType, AnchorSizeType, RadiusType, ButtonRadiusType } from '../../utils/config/neumorphic-type'
 @Component
 export default class Button extends Vue {
   @Prop({ type: Boolean, default: false })
   circle!: boolean;
+
+  @Prop({default: 'plain'})
+  radius!: ButtonRadiusType;
 
   @Prop({type: String, default: 'info'})
   color!: ColorType;
@@ -28,6 +32,16 @@ export default class Button extends Vue {
   @Prop({default: false})
   disabled!: boolean;
 
+  @Watch('circle')
+  circleChange(newValue: boolean) {
+    this.neumorphicButtonClass['neumorphic-btn-circle'] = newValue;
+  }
+
+  @Watch('radius')
+  radiusChange(newValue: ButtonRadiusType) {
+    this.neumorphicButtonStyle['border-radius'] = this.getButtonRadius(newValue);
+  }
+
   @Watch('color')
   colorChange(newValue: ColorType) {
     this.neumorphicButtonStyle['color'] = this.getButtonColor(newValue);
@@ -38,6 +52,11 @@ export default class Button extends Vue {
     this.neumorphicButtonStyle['padding'] = this.getButtonSize(newValue);
   }
 
+  @Watch('disabled')
+  disabledChange(newValue: boolean) {
+    (this.$refs.neumorphicButton as HTMLButtonElement).disabled = newValue;
+  }
+
   neumorphicButtonClass: Record<string, boolean> = {
     'neumorphic-btn': true,
     'neumorphic-btn-circle': this.circle
@@ -45,7 +64,8 @@ export default class Button extends Vue {
 
   neumorphicButtonStyle: Record<string, string> = {
     'padding': this.getButtonSize(this.size),
-    'color': this.getButtonColor(this.color) || this.color
+    'color': this.getButtonColor(this.color) || this.color,
+    'border-radius': this.getButtonRadius(this.radius)
   }
 
   // 按钮大小配置
@@ -57,6 +77,14 @@ export default class Button extends Vue {
       'mini': '6px 15px',
       'supermini': '2px 6px'
     }[size];
+  }
+
+  // 按钮边框圆弧配置
+  getButtonRadius(radius: ButtonRadiusType): string {
+    return {
+      'plain': 'var(--small-radius)',
+      'round': 'var(--large-radius)',
+    }[radius];
   }
 
   // 颜色配置
@@ -74,7 +102,7 @@ export default class Button extends Vue {
 
 }
 </script>
-<style scoped>
+<style>
 .neumorphic-btn {
   border: none;
   outline: none;
