@@ -3,6 +3,6 @@
 A UI Component By Vue
 
 
-Document On [http://biandon.github.io/](http://binjur.github.io/)
+Document On [http://binjur.github.io/](http://binjur.github.io/)
 
 
